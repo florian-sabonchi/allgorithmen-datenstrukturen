@@ -31,7 +31,9 @@
 
 
 (define (get-at-pos n pos)
-  (cond ((>= pos 0) (remainder (quotient n (expt 10 pos)) 10))))  
+  (cond ((>= pos 0) (remainder (quotient n (expt 10 pos)) 10))))
+
+
 
 
 (define (find-caesar n k r i)
@@ -42,4 +44,6 @@
 
 (define (caesar_encrypt n k)
   (find-caesar n k "" (- (string-length (number->string n)) 1)))
-  
+
+
+(caesar_encrypt 01023 1) 
