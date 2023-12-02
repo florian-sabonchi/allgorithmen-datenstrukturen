@@ -1,25 +1,25 @@
 #lang racket
 
-(define (fak-iter n result)
-  (if (> n 0) (fak-iter (- n 1) (* result n)) result))
+
+
+(define (euler n)
+  (define (euler-iter quotient fak counter result n)
+    (if (> n counter) (euler-iter (/ 1 fak) (* fak counter) (+ counter 1) (+ result quotient) n) result))
+  (euler-iter 0 1 1.0 0 n))
 
 
 
-(define (euler-iter n result)
-  (if (> n 0) (euler-iter (- n 1)
-                          (+ result (/ 1 (fak-iter n 1)))) result))
+(define (max-iter n m) (if (> (quotient n 10) 0) (max-iter (quotient n 10) (if (> (remainder n 10) m) (remainder n 10) m)) m))
 
 
-(define (euler-n n) (euler-iter n 1))
-
-
-
-(define (max-iter n m) (let ((c_max (remainder n 10)))
-  (if (> (quotient n 10) 0) (max-iter (quotient n 10) (if (> c_max m) c_max m)) m)))
-
- 
 
 (define (maxziffer n)(max-iter n 0))
+
+(maxziffer 127456)
+
+
+
+; 0
 
 
 
@@ -50,6 +50,7 @@
 
 (define (mul x y)
   (if (= y 0) x (sum x (* x (- y 1)))))
+
 
 
 
