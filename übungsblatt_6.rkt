@@ -21,14 +21,23 @@
           (else (finde-zahl (+ aktuelle-zahl 1))))) (finde-zahl zahl))
 
 
-
 ; Aufgabe 3
 (define (konst-addierer n)
-  (lambda (x) (+ x 1)))
-
-(konst-addierer 1)
+  (lambda (x) (+ x n)))
 
 
+; Aufgabe 4
+
+(define (ggt-helper x y)
+  (let ((mod-result (modulo x y)))
+  (if (= mod-result 0) y
+      (ggt-helper y mod-result ))))
+
+(define (konst-ggt b)
+  (lambda (x) (ggt-helper x b )))
 
 
+; Aufgabe 5
 
+(define (paar-operation op)
+  (lambda (x) (apply op (flatten x))))
